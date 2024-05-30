@@ -1,0 +1,18 @@
+#spring:
+#  application-name: TranslateBot
+#
+#  datasource:
+#    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+#    username: postrges
+#    url: jdbc:tc:postgresql:14.1-alpine:///bundle_net_db
+#    password: ghjuf2401
+#
+#bot:
+#  name: TranslaterSpringBot
+#  token: 7359033034:AAGP_pvZfAic87M_LNs6tkdWZiEDvUb7pA0
+#
+#api:
+#  version: v1
+#server:
+#  servlet:
+#    context-path: /api/${api.version}/
