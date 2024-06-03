@@ -3,13 +3,13 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    username: postrges
+    username: ${DATASOURCE_NAME}
     url: jdbc:postgresql://localhost:5432/translate_db
-    password: postrges
+    password: ${DATASOURCE_PASSWORD}
 
 bot:
   name: TranslaterSpringBot
-  token: 7359033034:AAGP_pvZfAic87M_LNs6tkdWZiEDvUb7pA0
+  token: ${BOT_TOKEN}
 
 api:
   version: v1
