@@ -42,11 +42,13 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     private void startCommandRecived(Long chatId, String firstName) {
+        String text = "Привет" + firstName;
+        sendMessage(chatId, text);
     }
 
     private void sendMessage(Long chatId, String text) {
         SendMessage message = new SendMessage();
-        message.setChatId(chatId);
+        message.setChatId(String.valueOf(chatId));
         message.setText(text);
         try {
             execute(message);
