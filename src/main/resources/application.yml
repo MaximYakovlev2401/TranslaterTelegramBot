@@ -1,15 +1,43 @@
+#application:
+#  database-url: jdbc:postgresql://localhost:5432/translate_db
+#  database-schema: translatebot
+
 spring:
   application-name: TranslateBot
+
+  jpa:
+    properties:
+      hibernate:
+        default_schema: translatebot
 
   datasource:
     driver-class-name: org.postgresql.Driver
     username: ${DATASOURCE_NAME}
-    url: jdbc:postgresql://localhost:5432/translate_db
+    url: jdbc:postgresql://localhost:5432/translate_db?currentSchema=translatebot
     password: ${DATASOURCE_PASSWORD}
+
+  liquibase:
+    default-schema: translatebot
 
 bot:
   name: TranslaterSpringBot
   token: ${BOT_TOKEN}
+
+mail:
+  default-encoding: UTF-8
+  host: smtp.yandex.ru
+  username: ${MAIL_USERNAME}
+  password: ${MAIL_PASSWORD}
+  port: 587
+  from: "Yakovlevmv2401@yandex.ru"
+  properties:
+    mail:
+      smtp:
+        auth: true
+        ssl: true
+      debug: true
+  protocol: smtp
+  test-connection: false
 
 api:
   version: v1
