@@ -30,8 +30,11 @@ public class AdminController {
             }
     )
     @GetMapping("/client-ids")
-    public ResponseEntity<List<String>> getAllIds() {
-        return new ResponseEntity<List<String>>(adminService.getAllClientsIds(), HttpStatus.OK);
+    public ResponseEntity<List<String>> getAllIds(
+            @RequestParam("offset") Integer offset,
+            @RequestParam("limit") Integer limit
+    ) {
+        return new ResponseEntity<>(adminService.getAllClientsIds(PageRequest.of(offset, limit)), HttpStatus.OK);
     }
 
     @Operation(summary = "Получение списка сообщений пользователя")
@@ -43,12 +46,10 @@ public class AdminController {
     )
     @GetMapping("/{chatId}")
 
-    public ResponseEntity<Page<String>> getAllMessages(
-            @PathVariable @NotBlank Long chatId,
-            @RequestParam("offset") Integer offset,
-            @RequestParam("limit") Integer limit
+    public ResponseEntity<List<String>> getAllMessages(
+            @PathVariable @NotBlank Long chatId
     ) {
-        return new ResponseEntity<Page<String>>((Page<String>) adminService.getMessagesById(PageRequest.of(offset, limit),chatId), HttpStatus.OK);
+        return new ResponseEntity<>(adminService.getMessagesById(chatId), HttpStatus.OK);
     }
 
 }

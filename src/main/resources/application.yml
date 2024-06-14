@@ -1,9 +1,6 @@
-#application:
-#  database-url: jdbc:postgresql://localhost:5432/translate_db
-#  database-schema: translatebot
-
-spring:
-  application-name: TranslateBot
+application:
+  kafka:
+    topic: "translate-topic"
 
   jpa:
     properties:
