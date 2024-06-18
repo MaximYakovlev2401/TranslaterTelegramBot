@@ -1,14 +1,19 @@
 services:
   postgres:
-    image: 'postgres:latest'
+    image: 'postgres:15.7-alpine'
     environment:
-      - 'POSTGRES_DB=translate_db'
-      - 'POSTGRES_PASSWORD=${DATASOURCE_PASSWORD}'
-      - 'POSTGRES_USER=${DATASOURCE_NAME}'
+      POSTGRES_DB: 'translate_db'
+      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_USER: 'postgres'
+      GDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - '../2. Init Database:/docker-entrypoint-initdb.d'
+      - 'translate_db:/var/lib/postgresql/data'
     ports:
       - '5432'
+
   broker:
-    image: cofluentic/cp-kafka:7.0.0
+    image: confluent/cp-kafka:7.0.0
     container_name: broker
     ports:
       - "9092:9092"
@@ -19,3 +24,6 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+
+volumes:
+  translate_db:

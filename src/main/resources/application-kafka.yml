@@ -8,4 +8,5 @@ spring:
     consumer:
       group-id: "translate-group"
       bootstrap-servers: "localhost:9092"
+      client-id: "translate-consumer"
       auto-offset-reset: earliest
