@@ -10,8 +10,8 @@ services:
     image: 'postgres:15.7-alpine'
     environment:
       POSTGRES_DB: 'translate_db'
-      POSTGRES_PASSWORD: 'postgres'
-      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: ${DATASOURCE_PASSWORD}
+      POSTGRES_USER: ${DATASOURCE_NAME}
       GDATA: "/var/lib/postgresql/data/pgdata"
     volumes:
       - '../2. Init Database:/docker-entrypoint-initdb.d'

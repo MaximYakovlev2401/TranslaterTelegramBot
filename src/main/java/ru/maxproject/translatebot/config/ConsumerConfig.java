@@ -2,9 +2,9 @@ package ru.maxproject.translatebot.config;
 
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,13 +27,9 @@ import static org.springframework.kafka.support.serializer.JsonDeserializer.TYPE
 
 @Configuration
 @Slf4j
+@RequiredArgsConstructor
 public class ConsumerConfig {
     public final String topicName;
-
-    public ConsumerConfig(@Value("${application.kafka.topic}") String topicName) {
-        this.topicName = topicName;
-    }
-
 
     @Bean
     public ConsumerFactory<String, StringValue> consumerFactory(

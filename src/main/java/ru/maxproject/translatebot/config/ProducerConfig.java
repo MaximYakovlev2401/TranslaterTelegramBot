@@ -2,10 +2,10 @@ package ru.maxproject.translatebot.config;
 
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,13 +21,10 @@ import ru.maxproject.translatebot.service.StringValueSource;
 
 @Configuration
 @Slf4j
+@RequiredArgsConstructor
 public class ProducerConfig {
 
     public final String topicName;
-
-    public ProducerConfig(@Value("${application.kafka.topic}") String topicName) {
-        this.topicName = topicName;
-    }
 
     @Bean
     public ObjectMapper objectMapperProducer() {
