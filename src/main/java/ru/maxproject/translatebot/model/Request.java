@@ -39,16 +39,4 @@ public class Request {
     @Enumerated(EnumType.STRING)
     private Language to;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Request request = (Request) o;
-        return id != null && Objects.equals(id, request.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }

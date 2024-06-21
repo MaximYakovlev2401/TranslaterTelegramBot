@@ -6,7 +6,7 @@ application:
     properties:
       hibernate:
         default_schema: translatebot
-
+spring:
   datasource:
     driver-class-name: 'org.postgresql.Driver'
     username: ${DATASOURCE_NAME}

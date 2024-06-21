@@ -2,9 +2,7 @@ package ru.maxproject.translatebot.config;
 
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,9 +20,8 @@ import ru.maxproject.translatebot.service.DataSenderKafka;
 import ru.maxproject.translatebot.service.StringValueSource;
 
 @Configuration
+@Slf4j
 public class ProducerConfig {
-
-    private static final Log log = LogFactory.getLog(ProducerConfig.class);
 
     public final String topicName;
 

@@ -2,10 +2,7 @@ package ru.maxproject.translatebot.config;
 
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.kafka.clients.admin.NewTopic;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
@@ -14,10 +11,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.config.KafkaListenerContainerFactory;
-import org.springframework.kafka.config.TopicBuilder;
-import org.springframework.kafka.core.*;
+import org.springframework.kafka.core.ConsumerFactory;
+import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
-import org.springframework.kafka.support.JacksonUtils;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.scheduling.concurrent.ConcurrentTaskExecutor;
 import ru.maxproject.translatebot.model.StringValue;
@@ -30,10 +26,8 @@ import java.util.concurrent.Executors;
 import static org.springframework.kafka.support.serializer.JsonDeserializer.TYPE_MAPPINGS;
 
 @Configuration
+@Slf4j
 public class ConsumerConfig {
-
-    private static final Log log = LogFactory.getLog(ConsumerConfig.class);
-
     public final String topicName;
 
     public ConsumerConfig(@Value("${application.kafka.topic}") String topicName) {
