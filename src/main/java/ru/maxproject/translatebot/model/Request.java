@@ -2,11 +2,17 @@ package ru.maxproject.translatebot.model;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import java.time.OffsetDateTime;
+import java.util.Objects;
 import java.util.UUID;
-@Data
+
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
 @Table(name = "request")
 public class Request {
@@ -32,4 +38,5 @@ public class Request {
     @Column(columnDefinition = "email_to", nullable = false)
     @Enumerated(EnumType.STRING)
     private Language to;
+
 }

@@ -1,19 +1,16 @@
-#application:
-#  database-url: jdbc:postgresql://localhost:5432/translate_db
-#  database-schema: translatebot
-
-spring:
-  application-name: TranslateBot
+application:
+  kafka:
+    topic: "translate-topic"
 
   jpa:
     properties:
       hibernate:
         default_schema: translatebot
-
+spring:
   datasource:
-    driver-class-name: org.postgresql.Driver
+    driver-class-name: 'org.postgresql.Driver'
     username: ${DATASOURCE_NAME}
-    url: jdbc:postgresql://localhost:5432/translate_db?currentSchema=translatebot
+    url: 'jdbc:postgresql://localhost:5432/translate_db?currentSchema=translatebot'
     password: ${DATASOURCE_PASSWORD}
 
   liquibase:

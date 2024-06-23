@@ -1,5 +1,7 @@
 package ru.maxproject.translatebot.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import ru.maxproject.translatebot.model.Client;
@@ -11,5 +13,5 @@ import java.util.UUID;
 @Repository
 public interface ClientRepository extends CrudRepository <Client, UUID>{
 
-    List<Client> findAll();
+    Page<Client> findAll(Pageable pageable);
 }
